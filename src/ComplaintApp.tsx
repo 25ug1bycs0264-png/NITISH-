@@ -226,6 +226,7 @@ function App() {
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
     const data = new FormData(form);
+    const attachments = form.querySelector<HTMLInputElement>('input[name="attachments"]')?.files;
     const now = new Date().toISOString();
     const reference = newReference(complaints);
     const complaint: Complaint = {
@@ -241,7 +242,7 @@ function App() {
       department: String(data.get("category")),
       assignedTo: "Unassigned",
       submittedAt: now,
-      attachments: Array.from((data.get("attachments") as FileList) ?? []).map((file) => file.name),
+      attachments: Array.from(attachments ?? []).map((file) => file.name),
       updates: [{ date: now, title: "Complaint submitted", detail: "Your complaint was received and logged.", public: true }],
       internalNotes: [],
       resolution: "",
