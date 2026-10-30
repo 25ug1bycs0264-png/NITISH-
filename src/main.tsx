@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./ComplaintApp";
-import "./complaint.css";
+import App from "./EventApp";
+import "./event.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
